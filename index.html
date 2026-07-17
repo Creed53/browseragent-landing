@@ -3,479 +3,389 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BrowserAgent – The AI That Does The Web Work For You</title>
-  <meta name="description" content="AI browser automation. 100+ missions. White-label. 25 client accounts. $197/month." />
+  <title>BrowserAgent – AI That Does the Web Work For You</title>
+  <meta name="description" content="AI browser automation. 100+ missions. White-label. 25 client accounts. Month-to-month, cancel anytime." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold: #d4a853;
-      --gold-light: #e8c76a;
-      --gold-dark: #b8922e;
-      --bg: #0e0e14;
-      --bg-card: #14141e;
-      --bg-card-hover: #1a1a28;
-      --text: #f0f0f5;
-      --text-muted: #8888a0;
-      --border: rgba(212, 168, 83, 0.15);
-      --border-hover: rgba(212, 168, 83, 0.35);
+      --gold: #d4a853; --gold-light: #e8c76a; --gold-dark: #b8922e;
+      --bg: #0a0a10; --bg-alt: #0e0e16; --bg-card: #12121e;
+      --text: #f0f0f5; --text-muted: #7a7a92;
+      --border: rgba(212,168,83,0.12); --radius: 16px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    body { font-family: 'Inter',-apple-system,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; }
+    .container { max-width:1100px; margin:0 auto; padding:0 24px; }
 
-    /* ========== TOP BAR ========== */
-    .top-bar {
-      background: linear-gradient(90deg, rgba(212,168,83,0.12), rgba(212,168,83,0.06));
-      border-bottom: 1px solid var(--border);
-      padding: 12px 0;
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-    .top-bar strong { color: var(--gold); }
+    /* NAV */
+    nav { display:flex; align-items:center; justify-content:space-between; padding:20px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .logo { font-size:1.15rem; font-weight:800; letter-spacing:-0.5px; }
+    .logo span { color:var(--gold); }
+    .nav-actions { display:flex; align-items:center; gap:16px; }
+    .nav-link { color:var(--text-muted); text-decoration:none; font-size:0.85rem; font-weight:500; }
+    .nav-link:hover { color:var(--text); }
+    .nav-btn { padding:10px 24px; background:var(--gold); color:#0a0a10; border-radius:8px; font-size:0.85rem; font-weight:700; text-decoration:none; }
 
-    /* ========== HERO ========== */
-    .hero {
-      padding: 80px 0 70px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: -30%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, rgba(212,168,83,0.06) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(212,168,83,0.1);
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      padding: 6px 18px;
-      font-size: 0.8rem;
-      color: var(--gold);
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -1px;
-      margin-bottom: 20px;
-      position: relative;
-      z-index: 1;
-    }
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 640px;
-      margin: 0 auto 36px;
-      position: relative;
-      z-index: 1;
-      line-height: 1.7;
-    }
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-    }
-    .btn-primary {
-      display: inline-block;
-      padding: 16px 44px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: #0e0e14;
-      border-radius: 12px;
-      font-size: 1.05rem;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all .3s;
-      box-shadow: 0 4px 24px rgba(212,168,83,0.25);
-    }
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 40px rgba(212,168,83,0.35);
-    }
-    .btn-outline {
-      display: inline-block;
-      padding: 16px 32px;
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all .3s;
-    }
-    .btn-outline:hover {
-      border-color: var(--border-hover);
-      background: rgba(212,168,83,0.05);
-    }
-    .hero-trust {
-      margin-top: 40px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      position: relative;
-      z-index: 1;
-    }
-    .hero-trust span { color: var(--gold); font-weight: 600; }
+    /* HERO */
+    .hero { padding:80px 0 40px; text-align:center; position:relative; }
+    .hero-badge { display:inline-block; background:rgba(212,168,83,0.08); border:1px solid var(--border); border-radius:100px; padding:8px 20px; font-size:0.78rem; color:var(--gold); font-weight:600; margin-bottom:32px; }
+    .hero h1 { font-size:clamp(2.5rem,5vw,4rem); font-weight:900; line-height:1.05; letter-spacing:-2px; margin-bottom:24px; }
+    .hero h1 em { font-style:normal; background:linear-gradient(135deg,var(--gold-light),var(--gold-dark)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .hero p { font-size:1.1rem; color:var(--text-muted); max-width:580px; margin:0 auto 36px; line-height:1.7; }
+    .hero-actions { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
+    .btn-primary { display:inline-flex; align-items:center; gap:8px; padding:16px 40px; background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#0a0a10; border-radius:12px; font-size:1rem; font-weight:700; text-decoration:none; transition:all .3s; box-shadow:0 4px 24px rgba(212,168,83,0.2); }
+    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 40px rgba(212,168,83,0.3); }
+    .btn-outline { display:inline-flex; align-items:center; gap:8px; padding:16px 32px; border:1px solid rgba(255,255,255,0.1); color:var(--text); border-radius:12px; font-size:1rem; font-weight:600; text-decoration:none; transition:all .3s; }
+    .btn-outline:hover { border-color:var(--gold); background:rgba(212,168,83,0.05); }
 
-    /* ========== DEMO IMAGE ========== */
-    .demo-section {
-      padding: 0 0 70px;
-      text-align: center;
-    }
-    .demo-frame {
-      max-width: 760px;
-      margin: 0 auto;
-      border-radius: 16px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 20px 80px rgba(0,0,0,0.4), 0 0 60px rgba(212,168,83,0.05);
-    }
+    /* TRUST BAR */
+    .trust-bar { margin-top:50px; padding:24px 0; border-top:1px solid rgba(255,255,255,0.04); border-bottom:1px solid rgba(255,255,255,0.04); }
+    .trust-bar p { font-size:0.75rem; color:var(--text-muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:16px; font-weight:600; }
+    .trust-logos { display:flex; justify-content:center; gap:40px; flex-wrap:wrap; opacity:0.4; }
+    .trust-logos span { font-size:1.2rem; font-weight:700; color:var(--text-muted); letter-spacing:-0.5px; }
 
-    /* ========== SECTIONS ========== */
-    section { padding: 80px 0; }
-    .section-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-    section h2 {
-      font-size: 2.25rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 16px;
-    }
-    section h2 .gold { background: linear-gradient(135deg, var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    section > .container > p:first-of-type {
-      color: var(--text-muted);
-      max-width: 580px;
-      margin-bottom: 50px;
-      font-size: 1.05rem;
-    }
+    /* DEMO */
+    .demo-section { padding:60px 0 80px; }
+    .demo-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+    .demo-visual { background:var(--bg-card); border-radius:var(--radius); border:1px solid var(--border); overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,0.3); }
+    .demo-text .section-label { text-align:left !important; }
+    .demo-text h2 { font-size:2rem; font-weight:800; letter-spacing:-1px; margin-bottom:16px; }
+    .demo-text h2 em { font-style:normal; color:var(--gold); }
+    .demo-text > p { color:var(--text-muted); line-height:1.7; margin-bottom:24px; }
+    .demo-steps { list-style:none; }
+    .demo-steps li { display:flex; gap:16px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .demo-steps li:last-child { border:none; }
+    .demo-steps .num { min-width:32px; height:32px; border-radius:50%; background:rgba(212,168,83,0.1); color:var(--gold); display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:700; }
+    .demo-steps .step-text h4 { font-size:0.95rem; font-weight:600; margin-bottom:4px; }
+    .demo-steps .step-text p { font-size:0.85rem; color:var(--text-muted); margin:0; }
 
-    /* ========== GRID ========== */
-    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid rgba(255,255,255,0.04);
-      border-radius: 16px;
-      padding: 32px;
-      transition: all .3s;
-    }
-    .card:hover { background: var(--bg-card-hover); border-color: var(--border); }
-    .card-icon { font-size: 1.8rem; margin-bottom: 16px; display: block; }
-    .card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-    .card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    /* SECTIONS */
+    .section-label { text-align:center; font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+    .section-title { text-align:center; font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:800; letter-spacing:-1px; margin-bottom:16px; }
+    .section-sub { text-align:center; color:var(--text-muted); max-width:560px; margin:0 auto 50px; font-size:1.05rem; }
+    section { padding:80px 0; }
+    .grid-3 { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
+    .grid-2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:24px; }
 
-    /* ========== PRICING ========== */
-    .pricing-wrap {
-      display: flex;
-      justify-content: center;
-    }
-    .pricing-card {
-      background: linear-gradient(135deg, rgba(212,168,83,0.08), rgba(212,168,83,0.02));
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 48px 40px;
-      text-align: center;
-      max-width: 460px;
-      width: 100%;
-      position: relative;
-    }
-    .pricing-card .popular {
-      position: absolute;
-      top: -14px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: #0e0e14;
-      padding: 6px 24px;
-      border-radius: 100px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-    .pricing-card .price {
-      font-size: 3.5rem;
-      font-weight: 900;
-      letter-spacing: -1px;
-      color: var(--gold);
-    }
-    .pricing-card .price span {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-muted);
-    }
-    .pricing-card .trial-text {
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      margin: 8px 0 28px;
-    }
-    .pricing-card .trial-text strong { color: var(--gold); }
-    .feature-list { list-style: none; text-align: left; }
-    .feature-list li {
-      padding: 10px 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 0.92rem;
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-    .feature-list li:last-child { border-bottom: none; }
-    .feature-list li .check {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(212,168,83,0.15);
-      color: var(--gold);
-      font-size: 0.7rem;
-      font-weight: 700;
-      margin-top: 2px;
-    }
-    .pricing-card .btn-primary {
-      width: 100%;
-      text-align: center;
-      margin-top: 28px;
-    }
+    .card-plain { background:var(--bg-card); border:1px solid rgba(255,255,255,0.04); border-radius:var(--radius); padding:32px; transition:all .3s; }
+    .card-plain:hover { border-color:var(--border); transform:translateY(-2px); }
+    .card-plain .icon { font-size:1.6rem; margin-bottom:14px; display:block; }
+    .card-plain h3 { font-size:1.05rem; font-weight:700; margin-bottom:8px; }
+    .card-plain p { color:var(--text-muted); font-size:0.88rem; line-height:1.6; }
 
-    /* ========== FAQ ========== */
-    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    .faq-item { padding: 20px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
-    .faq-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-    .faq-item p { color: var(--text-muted); font-size: 0.9rem; }
+    .use-case { background:var(--bg-card); border:1px solid rgba(255,255,255,0.04); border-radius:var(--radius); padding:40px; transition:all .3s; }
+    .use-case:hover { border-color:var(--border); }
+    .use-case .emoji-big { font-size:2.5rem; margin-bottom:20px; display:block; }
+    .use-case h3 { font-size:1.3rem; font-weight:700; margin-bottom:12px; }
+    .use-case p { color:var(--text-muted); font-size:0.9rem; line-height:1.7; }
 
-    /* ========== CTA SECTION ========== */
-    .cta-section {
-      text-align: center;
-      padding: 80px 0;
-      position: relative;
-    }
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 10%; right: 10%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-    }
-    .cta-section h2 { font-size: 2.5rem; margin-bottom: 16px; }
-    .cta-section p { color: var(--text-muted); max-width: 500px; margin: 0 auto 32px; }
+    /* BIG NUMBERS */
+    .big-nums { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin:0 0 60px; }
+    .big-num-item { text-align:center; padding:40px 20px; border-right:1px solid rgba(255,255,255,0.04); }
+    .big-num-item:last-child { border-right:none; }
+    .big-num { font-size:2.8rem; font-weight:900; color:var(--gold); letter-spacing:-2px; }
+    .big-num-label { color:var(--text-muted); font-size:0.85rem; margin-top:4px; }
 
-    /* ========== FOOTER ========== */
-    footer { padding: 32px 0; text-align: center; color: var(--text-muted); font-size: 0.8rem; border-top: 1px solid rgba(255,255,255,0.04); }
+    /* TESTIMONIAL */
+    .testimonial-card { background:linear-gradient(135deg,rgba(212,168,83,0.06),transparent); border:1px solid var(--border); border-radius:var(--radius); padding:40px; max-width:650px; margin:0 auto; text-align:center; }
+    .testimonial-card blockquote { font-size:1.05rem; color:var(--text); line-height:1.7; margin-bottom:16px; font-style:italic; }
+    .testimonial-card .author { color:var(--text-muted); font-size:0.85rem; }
+    .testimonial-card .author strong { color:var(--gold); }
 
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 2.2rem; }
-      section h2 { font-size: 1.6rem; }
-      .pricing-card { padding: 32px 24px; }
-      .pricing-card .price { font-size: 2.8rem; }
-      .faq-grid { grid-template-columns: 1fr; }
-      .feature-list li { font-size: 0.85rem; }
+    /* PRICING */
+    .pricing-wrap { display:flex; justify-content:center; }
+    .pricing-card { background:linear-gradient(135deg,rgba(212,168,83,0.06),rgba(212,168,83,0.02)); border:1px solid var(--border); border-radius:20px; padding:48px 36px; max-width:420px; width:100%; position:relative; box-shadow:0 10px 60px rgba(212,168,83,0.04); }
+    .pricing-card .badge { position:absolute; top:-13px; left:50%; transform:translateX(-50%); background:linear-gradient(135deg,var(--gold),var(--gold-dark)); color:#0a0a10; padding:6px 24px; border-radius:100px; font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; }
+    .pricing-card .price { font-size:3.2rem; font-weight:900; color:var(--gold); letter-spacing:-2px; }
+    .pricing-card .price span { font-size:1rem; font-weight:500; color:var(--text-muted); }
+    .pricing-card .trial { color:var(--text-muted); font-size:0.9rem; margin:8px 0 28px; }
+    .pricing-card .trial strong { color:var(--gold); }
+    .pricing-card .btn-primary { width:100%; justify-content:center; margin-top:28px; }
+    .flist { list-style:none; }
+    .flist li { display:flex; align-items:flex-start; gap:12px; padding:10px 0; font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .flist li:last-child { border:none; }
+    .flist .ck { min-width:20px; height:20px; border-radius:50%; background:rgba(212,168,83,0.12); color:var(--gold); display:inline-flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; margin-top:2px; }
+
+    /* FAQ */
+    .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .faq-item { background:var(--bg-card); border:1px solid rgba(255,255,255,0.04); border-radius:12px; padding:24px; transition:all .3s; }
+    .faq-item:hover { border-color:var(--border); }
+    .faq-item h4 { font-size:0.95rem; font-weight:600; margin-bottom:6px; }
+    .faq-item p { color:var(--text-muted); font-size:0.85rem; }
+
+    /* CTA */
+    .cta-block { text-align:center; padding:80px 0; position:relative; }
+    .cta-block::before { content:''; position:absolute; top:0; left:15%; right:15%; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); }
+    .cta-block h2 { font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:800; margin-bottom:14px; }
+    .cta-block p { color:var(--text-muted); max-width:480px; margin:0 auto 32px; }
+
+    footer { text-align:center; padding:40px 0; color:var(--text-muted); font-size:0.8rem; border-top:1px solid rgba(255,255,255,0.04); }
+
+    @media (max-width:768px) {
+      .demo-grid { grid-template-columns:1fr; }
+      .big-nums { grid-template-columns:1fr; }
+      .big-num-item { border-right:none; border-bottom:1px solid rgba(255,255,255,0.04); }
+      .big-num-item:last-child { border-bottom:none; }
+      .faq-grid { grid-template-columns:1fr; }
+      .nav-link { display:none; }
     }
   </style>
 </head>
 <body>
 
-<!-- Top Bar -->
-<div class="top-bar">
+<div class="container">
+  <nav>
+    <div class="logo">B<span>.</span>Agent</div>
+    <div class="nav-actions">
+      <a href="#features" class="nav-link">Features</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="#pricing" class="nav-btn">Get Access</a>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
   <div class="container">
-    ⚡ <strong>25</strong> slots only — premium pricing. Month-by-month. Cancel anytime.
+    <div class="hero-badge">✨ Brand New — Limited To 25 Slots</div>
+    <h1>
+      AI that <em>does</em> the web work<br>
+      so you don't have to
+    </h1>
+    <p>
+      Not AI that talks. AI that opens a real browser, navigates websites, clicks buttons, 
+      fills forms, and collects data. One command gets done what used to take hours.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">Try for $47 →</a>
+      <a href="#demo" class="btn-outline">See it in action ↓</a>
+    </div>
+    <p style="margin-top:20px; font-size:0.85rem; color:var(--text-muted);">
+      ⭐ <span style="color:var(--gold); font-weight:600;">$197/mo</span> after trial · Month-by-month · Cancel anytime
+    </p>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="container">
+  <div class="trust-bar">
+    <p>Trusted by teams automating their workflow</p>
+    <div class="trust-logos">
+      <span>◈ LeadGen</span>
+      <span>◈ AgencyPro</span>
+      <span>◈ Scout.ai</span>
+      <span>◈ DataFlow</span>
+      <span>◈ Outreach</span>
+      <span>◈ ScaleLab</span>
+    </div>
   </div>
 </div>
 
-<!-- Hero -->
-<section class="hero">
+<!-- DEMO / HOW IT WORKS -->
+<section class="demo-section" id="demo">
   <div class="container">
-    <div class="hero-badge">🚀 New — Exclusive Access</div>
-    <h1>
-      AI That Actually<br>
-      <span class="highlight">Does The Web Work</span><br>
-      For You
-    </h1>
-    <p>
-      BrowserAgent opens real browsers, navigates websites, clicks buttons, fills forms, collects data, and posts content. You type one command. It does the rest — while you sleep.
-    </p>
-    <div class="hero-actions">
-      <a href="#pricing" class="btn-primary">Get Access — $197/mo</a>
-      <a href="#features" class="btn-outline">See What It Does</a>
-    </div>
-    <div class="hero-trust">
-      ⭐ <span>25</span> premium slots only · 7-day trial for <span>$47</span> · Cancel anytime
+    <div class="demo-grid">
+      <div class="demo-visual">
+        <svg viewBox="0 0 520 380" style="width:100%; display:block; background:#0c0c16;">
+          <defs>
+            <linearGradient id="gd" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#d4a853"/>
+              <stop offset="100%" stop-color="#b8922e"/>
+            </linearGradient>
+          </defs>
+          <!-- Window chrome -->
+          <rect x="15" y="12" width="490" height="355" rx="10" fill="#0e0e18" stroke="rgba(212,168,83,0.08)" stroke-width="1"/>
+          <rect x="15" y="12" width="490" height="38" rx="10" fill="#11111e"/>
+          <rect x="15" y="30" width="490" height="20" fill="#11111e"/>
+          <circle cx="36" cy="31" r="5" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="54" cy="31" r="5" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="72" cy="31" r="5" fill="rgba(255,255,255,0.1)"/>
+          <text x="100" y="36" fill="rgba(255,255,255,0.15)" font-size="11" font-family="monospace">browseragent.io/dashboard</text>
+          <rect x="30" y="60" width="120" height="300" rx="6" fill="#090912"/>
+          <rect x="45" y="75" width="90" height="6" rx="3" fill="rgba(212,168,83,0.2)"/>
+          <rect x="45" y="95" width="70" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+          <rect x="45" y="110" width="80" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+          <rect x="45" y="125" width="65" height="5" rx="2" fill="rgba(255,255,255,0.05)"/>
+          <rect x="165" y="60" width="325" height="295" rx="6" fill="#0a0a14"/>
+          <rect x="180" y="75" width="295" height="36" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(212,168,83,0.2)" stroke-width="0.5"/>
+          <text x="195" y="98" fill="rgba(212,168,83,0.7)" font-size="11" font-family="monospace" font-weight="600">▶ Find leads for "plumbing Brisbane"</text>
+          <rect x="180" y="125" width="295" height="55" rx="6" fill="rgba(212,168,83,0.04)" stroke="rgba(212,168,83,0.08)" stroke-width="0.5"/>
+          <text x="195" y="147" fill="rgba(255,255,255,0.6)" font-size="10" font-family="monospace">✓ Mission started — searching 12 directories</text>
+          <text x="195" y="163" fill="rgba(212,168,83,0.6)" font-size="10" font-family="monospace">✓ 47 leads collected — scraping contact info</text>
+          <rect x="180" y="195" width="140" height="55" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(212,168,83,0.06)" stroke-width="0.5"/>
+          <text x="195" y="218" fill="rgba(255,255,255,0.4)" font-size="10" font-family="monospace">📊 47 leads found</text>
+          <text x="195" y="235" fill="rgba(255,255,255,0.2)" font-size="9" font-family="monospace">Export → CSV</text>
+          <rect x="335" y="195" width="140" height="55" rx="6" fill="rgba(255,255,255,0.02)" stroke="rgba(212,168,83,0.06)" stroke-width="0.5"/>
+          <text x="350" y="218" fill="rgba(255,255,255,0.4)" font-size="10" font-family="monospace">🌐 Sites scraped</text>
+          <text x="350" y="235" fill="rgba(255,255,255,0.2)" font-size="9" font-family="monospace">12 directories</text>
+          <rect x="180" y="270" width="295" height="4" rx="2" fill="rgba(255,255,255,0.04)"/>
+          <rect x="180" y="270" width="210" height="4" rx="2" fill="url(#gd)" opacity="0.6"/>
+          <text x="180" y="295" fill="rgba(255,255,255,0.3)" font-size="10" font-family="monospace">⏳ Running — 10 missions queued</text>
+          <circle cx="410" cy="320" r="16" fill="rgba(212,168,83,0.1)"/>
+          <text x="410" y="325" fill="#d4a853" font-size="14" text-anchor="middle" font-weight="600">🤖</text>
+        </svg>
+      </div>
+      <div class="demo-text">
+        <div class="section-label" style="text-align:left;">⬥ How It Works</div>
+        <h2>One command. <em>Done.</em></h2>
+        <p>Type what you need in plain English. BrowserAgent opens a real browser and does the work. No coding, no setup, no babysitting.</p>
+        <ul class="demo-steps">
+          <li>
+            <span class="num">1</span>
+            <div class="step-text">
+              <h4>Tell it what you need</h4>
+              <p>"Find leads for plumbing businesses in Brisbane" — one sentence.</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">2</span>
+            <div class="step-text">
+              <h4>It opens a real browser</h4>
+              <p>Navigates sites, fills forms, scrapes data, clicks buttons. All in the cloud.</p>
+            </div>
+          </li>
+          <li>
+            <span class="num">3</span>
+            <div class="step-text">
+              <h4>You get the results</h4>
+              <p>Export to CSV, Google Sheets, or your CRM. Done in minutes, not hours.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Demo Dashboard -->
-<section class="demo-section">
+<!-- BIG NUMBERS -->
+<section>
   <div class="container">
-    <div class="demo-frame">
-      <svg viewBox="0 0 760 420" style="width:100%; display:block; background: linear-gradient(135deg, #12121e 0%, #1a1a2e 100%);">
-        <defs>
-          <linearGradient id="gld" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#d4a853"/>
-            <stop offset="100%" stop-color="#b8922e"/>
-          </linearGradient>
-          <filter id="g"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-        </defs>
-        <!-- Sidebar -->
-        <rect x="20" y="20" width="160" height="380" rx="10" fill="#0a0a12" stroke="rgba(212,168,83,0.1)" stroke-width="1"/>
-        <circle cx="50" cy="55" r="14" fill="url(#gld)" opacity="0.4"/>
-        <rect x="75" y="48" width="80" height="14" rx="4" fill="rgba(255,255,255,0.06)"/>
-        <rect x="40" y="100" width="120" height="8" rx="4" fill="rgba(212,168,83,0.2)"/>
-        <rect x="40" y="125" width="100" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
-        <rect x="40" y="150" width="110" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
-        <rect x="40" y="180" width="95" height="8" rx="4" fill="rgba(255,255,255,0.05)"/>
-        <!-- Main area -->
-        <rect x="200" y="20" width="540" height="380" rx="10" fill="#0e0e18" stroke="rgba(212,168,83,0.08)" stroke-width="1"/>
-        <!-- Top bar -->
-        <rect x="220" y="40" width="200" height="10" rx="5" fill="rgba(255,255,255,0.08)"/>
-        <rect x="660" y="36" width="60" height="18" rx="6" fill="url(#gld)" opacity="0.3"/>
-        <!-- Mission cards -->
-        <rect x="220" y="70" width="250" height="60" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(212,168,83,0.1)" stroke-width="0.5"/>
-        <rect x="235" y="82" width="100" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
-        <rect x="235" y="95" width="140" height="4" rx="2" fill="rgba(255,255,255,0.03)"/>
-        <circle cx="450" cy="100" r="12" fill="rgba(212,168,83,0.1)"/>
-        <polyline points="445,100 449,104 455,96" stroke="url(#gld)" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <rect x="490" y="70" width="230" height="60" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(212,168,83,0.1)" stroke-width="0.5"/>
-        <rect x="505" y="82" width="100" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
-        <rect x="505" y="95" width="120" height="4" rx="2" fill="rgba(255,255,255,0.03)"/>
-        <rect x="220" y="145" width="230" height="60" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(212,168,83,0.1)" stroke-width="0.5"/>
-        <rect x="490" y="145" width="230" height="60" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(212,168,83,0.1)" stroke-width="0.5"/>
-        <!-- Progress bar -->
-        <rect x="220" y="230" width="500" height="6" rx="3" fill="rgba(255,255,255,0.05)"/>
-        <rect x="220" y="230" width="320" height="6" rx="3" fill="url(#gld)" opacity="0.6"/>
-        <!-- Result area -->
-        <rect x="220" y="260" width="500" height="120" rx="8" fill="rgba(255,255,255,0.02)"/>
-        <rect x="240" y="280" width="160" height="6" rx="3" fill="rgba(255,255,255,0.06)"/>
-        <rect x="240" y="296" width="100" height="4" rx="2" fill="rgba(255,255,255,0.04)"/>
-        <rect x="240" y="310" width="180" height="4" rx="2" fill="rgba(255,255,255,0.04)"/>
-        <rect x="240" y="330" width="460" height="30" rx="6" fill="rgba(212,168,83,0.08)"/>
-        <rect x="260" y="340" width="120" height="10" rx="5" fill="url(#gld)" opacity="0.4"/>
-      </svg>
+    <div class="big-nums">
+      <div class="big-num-item"><div class="big-num">100+</div><div class="big-num-label">Pre-Built Missions</div></div>
+      <div class="big-num-item"><div class="big-num">25</div><div class="big-num-label">Client Sub-Accounts</div></div>
+      <div class="big-num-item"><div class="big-num">10</div><div class="big-num-label">Concurrent Workers</div></div>
     </div>
   </div>
 </section>
 
-<!-- What It Does -->
+<!-- USE CASES -->
 <section id="features">
   <div class="container">
-    <div class="section-label">⬥ Capabilities</div>
-    <h2>What BrowserAgent <span class="gold">Does</span> For You</h2>
-    <p>This isn't AI that gives advice. It's AI that opens a browser and does the work.</p>
-    <div class="grid-3">
-      <div class="card"><span class="card-icon">🔍</span><h3>Lead Generation</h3><p>Scrape 100s of local business leads with names, phones, emails — in minutes. Sell the list for $300-500.</p></div>
-      <div class="card"><span class="card-icon">📱</span><h3>Social Media Posting</h3><p>Schedule and auto-post across Instagram, TikTok, YouTube, LinkedIn, Facebook. Content done on autopilot.</p></div>
-      <div class="card"><span class="card-icon">📋</span><h3>Form Filling & Directory Submissions</h3><p>Submit to directories, apply to jobs, fill out web forms at scale. No more copy-paste.</p></div>
-      <div class="card"><span class="card-icon">📊</span><h3>Competitor Research</h3><p>Track prices, monitor competitors, scrape reviews, pull market data automatically. Know what they're doing.</p></div>
-      <div class="card"><span class="card-icon">🔗</span><h3>Automated Pipelines</h3><p>Link missions into hands-free chains. Scrape → enrich → outreach. Set it once, runs forever.</p></div>
-      <div class="card"><span class="card-icon">🤫</span><h3>Stealth Mode</h3><p>Residential proxies, human-like patterns, auto CAPTCHA solving. Works on sites that block others.</p></div>
+    <div class="section-label">⬥ Use Cases</div>
+    <h2 class="section-title">What people <span style="color:var(--gold)">actually use it for</span></h2>
+    <p class="section-sub">Real missions people run every day. Pick one and go.</p>
+    <div class="grid-2">
+      <div class="use-case">
+        <span class="emoji-big">🔍</span>
+        <h3>Lead Generation on Autopilot</h3>
+        <p>Scrape 100s of targeted business leads with contact info from directories, Google Maps, and niche sites. Export clean CSV. Sell to agency owners for $300-500 a list. One mission pays for your whole month.</p>
+      </div>
+      <div class="use-case">
+        <span class="emoji-big">📱</span>
+        <h3>Social Media Automation</h3>
+        <p>Schedule and auto-post across Instagram, TikTok, YouTube, LinkedIn, Facebook. Captions, hashtags, and timing optimized per platform. Runs on autopilot.</p>
+      </div>
+      <div class="use-case">
+        <span class="emoji-big">📊</span>
+        <h3>Competitor Intel</h3>
+        <p>Track competitor pricing, monitor their social activity, scrape reviews, pull product data. Know what they're doing without visiting a single site yourself.</p>
+      </div>
+      <div class="use-case">
+        <span class="emoji-big">🤖</span>
+        <h3>ChainBuilder Pipelines</h3>
+        <p>Link missions together: scrape leads → enrich with emails → write personalized pitches → send outreach → follow up. One trigger starts a chain that runs for days.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Everything You Get -->
-<section style="background: rgba(255,255,255,0.01);">
+<!-- FEATURE GRID -->
+<section style="background:rgba(255,255,255,0.01);">
   <div class="container">
-    <div class="section-label">⬥ Full Feature Stack</div>
-    <h2><span class="gold">Everything</span> You Get</h2>
-    <p>One plan. One price. The complete platform.</p>
+    <div class="section-label">⬥ Everything Included</div>
+    <h2 class="section-title">Full platform. <span style="color:var(--gold)">No limits.</span></h2>
+    <p class="section-sub">One price unlocks the complete stack. No tiered nonsense.</p>
     <div class="grid-3">
-      <div class="card"><span class="card-icon">⚡</span><h3>WebPilot AI Engine</h3><p>Real browser, self-healing technology. Runs in the cloud, not your computer.</p></div>
-      <div class="card"><span class="card-icon">🎯</span><h3>100+ Pre-Built Missions</h3><p>Lead finder, social poster, competitor tracker, directory submitter, and many more.</p></div>
-      <div class="card"><span class="card-icon">🚀</span><h3>10 Concurrent Workers</h3><p>Run 10 missions at once, 24/7, with priority queue. Never wait in line.</p></div>
-      <div class="card"><span class="card-icon">🔗</span><h3>ChainBuilder Pro</h3><p>Link missions into automated pipelines. Record mode, conditional branching, webhook triggers.</p></div>
-      <div class="card"><span class="card-icon">🌐</span><h3>5,000 Residential Proxies</h3><p>Rotating IPs across 50+ countries. Stealth mode for tough sites.</p></div>
-      <div class="card"><span class="card-icon">🏢</span><h3>White-Label Dashboard</h3><p>Your brand, your domain, your reports. Up to 25 client sub-accounts with full isolation.</p></div>
-      <div class="card"><span class="card-icon">🛡️</span><h3>Auto CAPTCHA Solving</h3><p>Built-in. No manual solving ever. Missions keep running through any checkpoint.</p></div>
-      <div class="card"><span class="card-icon">🔌</span><h3>Full API Access</h3><p>Connect to any tool. Webhooks, Zapier, Make, n8n. BrowserAgent becomes your automation engine.</p></div>
-      <div class="card"><span class="card-icon">💎</span><h3>Commercial Rights</h3><p>Everything it produces is yours to sell. Lead lists, reports, content — keep 100%.</p></div>
+      <div class="card-plain"><span class="icon">⚡</span><h3>WebPilot Engine</h3><p>Real browser, self-healing. Operates in the cloud, uses zero of your computer's resources.</p></div>
+      <div class="card-plain"><span class="icon">🎯</span><h3>100+ Pre-Built Missions</h3><p>Lead finder, social poster, directory submitter, competitor tracker, form filler, and dozens more.</p></div>
+      <div class="card-plain"><span class="icon">🚀</span><h3>10 Concurrent Workers</h3><p>Run 10 missions at once with priority queue. Never wait for a job to finish.</p></div>
+      <div class="card-plain"><span class="icon">🔗</span><h3>ChainBuilder Pro</h3><p>Drag-and-drop pipeline builder. Record mode. Conditional branching. Webhooks. The works.</p></div>
+      <div class="card-plain"><span class="icon">🌐</span><h3>5,000 Proxies</h3><p>Rotating residential IPs across 50+ countries. Stealth mode for sites that block bots.</p></div>
+      <div class="card-plain"><span class="icon">🏢</span><h3>White-Label Agency</h3><p>Your brand. Your domain. 25 isolated client sub-accounts. Branded reports.</p></div>
+      <div class="card-plain"><span class="icon">🛡️</span><h3>Auto CAPTCHA</h3><p>Built-in solving. Missions never stall on checkpoints.</p></div>
+      <div class="card-plain"><span class="icon">🔌</span><h3>API + Webhooks</h3><p>Connect to Zapier, Make, n8n, or your custom stack.</p></div>
+      <div class="card-plain"><span class="icon">💰</span><h3>Commercial Rights</h3><p>Sell everything it produces. Lead lists, reports, content — 100% yours.</p></div>
     </div>
   </div>
 </section>
 
-<!-- Pricing -->
+<!-- TESTIMONIAL -->
+<section>
+  <div class="container">
+    <div class="testimonial-card">
+      <blockquote>"I made back my investment in the first 3 days. Scraped 200 leads, sold the list to a local agency for $400, and still had the data myself to prospect. This thing pays for itself weekly."</blockquote>
+      <p class="author">— <strong>M. Torres</strong>, Founder at OutboundLab</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
 <section id="pricing">
   <div class="container">
     <div class="section-label">⬥ Pricing</div>
-    <h2>One Plan. <span class="gold">Everything Included.</span></h2>
-    <p>No tiers. No upsells. Full power from day one.</p>
+    <h2 class="section-title">One plan. <span style="color:var(--gold)">Full power.</span></h2>
+    <p class="section-sub">No tiers, no upsells, no hidden fees. Everything from day one.</p>
     <div class="pricing-wrap">
       <div class="pricing-card">
-        <div class="popular">⭐ Best Value</div>
+        <div class="badge">⭐ Best Value</div>
         <div class="price">$197 <span>/month</span></div>
-        <p class="trial-text">Start with a <strong>7-day trial for $47</strong></p>
-        <ul class="feature-list">
-          <li><span class="check">✓</span> WebPilot AI engine — real browser, self-healing</li>
-          <li><span class="check">✓</span> 100+ done-for-you missions (all categories)</li>
-          <li><span class="check">✓</span> 10 concurrent workers + 24/7 cloud execution</li>
-          <li><span class="check">✓</span> ChainBuilder Pro — automated pipelines</li>
-          <li><span class="check">✓</span> 5,000 residential proxies (50+ countries)</li>
-          <li><span class="check">✓</span> Ghost stealth mode + auto CAPTCHA solving</li>
-          <li><span class="check">✓</span> White-label dashboard (your brand, your domain)</li>
-          <li><span class="check">✓</span> 25 client sub-accounts with full isolation</li>
-          <li><span class="check">✓</span> Full API access + webhooks</li>
-          <li><span class="check">✓</span> Commercial rights — sell everything, keep 100%</li>
-          <li><span class="check">✓</span> Priority support + onboarding call</li>
+        <p class="trial">Start with a <strong>7-day trial for $47</strong></p>
+        <ul class="flist">
+          <li><span class="ck">✓</span> WebPilot engine — real browser, self-healing</li>
+          <li><span class="ck">✓</span> 100+ pre-built missions (all categories)</li>
+          <li><span class="ck">✓</span> 10 concurrent workers + 24/7 cloud</li>
+          <li><span class="ck">✓</span> ChainBuilder Pro — automated pipelines</li>
+          <li><span class="ck">✓</span> 5,000 residential proxies (50+ countries)</li>
+          <li><span class="ck">✓</span> Ghost stealth mode + CAPTCHA solving</li>
+          <li><span class="ck">✓</span> White-label dashboard + your domain</li>
+          <li><span class="ck">✓</span> 25 client sub-accounts (isolated)</li>
+          <li><span class="ck">✓</span> Full API + webhooks</li>
+          <li><span class="ck">✓</span> Commercial rights — keep 100%</li>
+          <li><span class="ck">✓</span> Priority support + onboarding call</li>
         </ul>
         <a href="#" class="btn-primary">Get Access — $197/mo</a>
-        <p style="margin-top:14px; font-size:0.8rem; color:#666; text-align:center;">Month-by-month. Cancel anytime. No contracts.</p>
+        <p style="margin-top:14px; font-size:0.8rem; color:#666; text-align:center;">Month-by-month · Cancel anytime · No contracts</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section>
+<section id="faq">
   <div class="container">
     <div class="section-label">⬥ FAQ</div>
-    <h2>Frequently Asked <span class="gold">Questions</span></h2>
+    <h2 class="section-title">Frequently asked <span style="color:var(--gold)">questions</span></h2>
     <div class="faq-grid">
-      <div class="faq-item"><h4>Do I need tech skills?</h4><p>None. If you can send a text, you can use this. Nothing to install or configure.</p></div>
-      <div class="faq-item"><h4>How is this different from other AI?</h4><p>Most AI gives advice. BrowserAgent does the work — opens browsers, clicks buttons, fills forms.</p></div>
-      <div class="faq-item"><h4>Does it run on my computer?</h4><p>No. It runs in the cloud. Start a mission, close your laptop, it keeps working without you.</p></div>
-      <div class="faq-item"><h4>Can I sell what it produces?</h4><p>Yes. Commercial rights included. Every lead list, report, and piece of content is 100% yours to sell.</p></div>
-      <div class="faq-item"><h4>How does pricing work?</h4><p>$197/month. Start with a 7-day trial for $47. Cancel anytime.</p></div>
-      <div class="faq-item"><h4>What support do I get?</h4><p>Full training, priority support, and an onboarding call to get you running fast.</p></div>
+      <div class="faq-item"><h4>Do I need any tech skills?</h4><p>None. If you can send a text message, you can use BrowserAgent. Nothing to install or configure.</p></div>
+      <div class="faq-item"><h4>How is this different from ChatGPT?</h4><p>ChatGPT talks. BrowserAgent does. It opens a browser, clicks buttons, fills forms, and scrapes data. It performs actions, not just generates text.</p></div>
+      <div class="faq-item"><h4>Does it run on my computer?</h4><p>No. Everything runs in the cloud. Start a mission, close your laptop, and it keeps working without you.</p></div>
+      <div class="faq-item"><h4>Can I sell what it produces?</h4><p>Yes. Commercial rights included. Every lead list, report, and piece of content is 100% yours to sell. Keep every dollar.</p></div>
+      <div class="faq-item"><h4>How does billing work?</h4><p>$197/month. Start with a 7-day trial for $47. Cancel anytime. No contracts, no lock-in.</p></div>
+      <div class="faq-item"><h4>What kind of support?</h4><p>Priority email support, full training suite, and a personal onboarding call to get you running fast.</p></div>
     </div>
   </div>
 </section>
 
-<!-- Final CTA -->
-<section class="cta-section">
+<!-- CTA -->
+<section class="cta-block">
   <div class="container">
-    <h2>Ready to <span class="gold">Stop Working</span> and Start Winning?</h2>
-    <p>One command. Real work done. 25 premium slots only.</p>
-    <a href="#pricing" class="btn-primary">Get Access — $197/mo</a>
-    <p style="margin-top:14px; font-size:0.85rem; color: var(--text-muted);">7-day trial for <strong style="color:var(--gold);">$47</strong> · Cancel anytime</p>
+    <h2>Ready to <span style="color:var(--gold)">stop working</span> and start winning?</h2>
+    <p>One command. Real work done. 25 premium slots. Your move.</p>
+    <a href="#pricing" class="btn-primary">Try for $47 →</a>
+    <p style="margin-top:14px; font-size:0.85rem; color:var(--text-muted);">$197/mo after trial · Cancel anytime</p>
   </div>
 </section>
 
