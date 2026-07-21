@@ -30,7 +30,10 @@
 
     /* HERO */
     .hero { padding:80px 0 40px; text-align:center; position:relative; }
-    .hero-badge { display:inline-block; background:rgba(212,168,83,0.08); border:1px solid var(--border); border-radius:100px; padding:8px 20px; font-size:0.78rem; color:var(--gold); font-weight:600; margin-bottom:32px; }
+    .hero-badge { display:inline-block; background:rgba(212,168,83,0.08); border:1px solid var(--border); border-radius:100px; padding:8px 20px; font-size:0.78rem; color:var(--gold); font-weight:600; margin-bottom:28px; }
+    .hero-bar { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-bottom:32px; }
+    .hero-stat { font-size:0.85rem; color:var(--text-muted); }
+    .hero-stat strong { color:var(--gold); }
     .hero h1 { font-size:clamp(2.5rem,5vw,4rem); font-weight:900; line-height:1.05; letter-spacing:-2px; margin-bottom:24px; }
     .hero h1 em { font-style:normal; background:linear-gradient(135deg,var(--gold-light),var(--gold-dark)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
     .hero p { font-size:1.1rem; color:var(--text-muted); max-width:580px; margin:0 auto 36px; line-height:1.7; }
@@ -163,7 +166,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="container">
-    <div class="hero-badge">✨ Brand New — Limited To 25 Slots</div>
+    <div class="hero-badge">⚠️ Only 25 Slots On This Platform</div>
     <h1>
       AI that <em>does</em> the web work<br>
       so you don't have to
@@ -172,6 +175,11 @@
       Not AI that talks. AI that opens a real browser, navigates websites, clicks buttons, 
       fills forms, and collects data. One command gets done what used to take hours.
     </p>
+    <div class="hero-bar">
+      <span class="hero-stat">🪑 <strong>25 slots</strong> total</span>
+      <span class="hero-stat">⏳ <strong>Waitlist</strong> once filled</span>
+      <span class="hero-stat">♻️ Slot opens → <strong>next in line gets in</strong></span>
+    </div>
     <div class="hero-actions">
       <a href="#pricing" class="btn-primary">Try for $47 →</a>
       <a href="#demo" class="btn-outline">See it in action ↓</a>
@@ -472,6 +480,7 @@
       <div class="faq-item"><h4>How is this different from ChatGPT?</h4><p>ChatGPT talks. BrowserAgent does. It opens a browser, clicks buttons, fills forms, and scrapes data. It performs actions, not just generates text.</p></div>
       <div class="faq-item"><h4>Does it run on my computer?</h4><p>No. Everything runs in the cloud. Start a mission, close your laptop, and it keeps working without you.</p></div>
       <div class="faq-item"><h4>Can I sell what it produces?</h4><p>Yes. Commercial rights included. Every lead list, report, and piece of content is 100% yours to sell. Keep every dollar.</p></div>
+      <div class="faq-item"><h4>What happens when all 25 slots are taken?</h4><p>You join the waitlist. As soon as someone cancels, the next person in line gets in. No jumping the queue.</p></div>
       <div class="faq-item"><h4>How does billing work?</h4><p>$197/month. Start with a 7-day trial for $47. Cancel anytime. No contracts, no lock-in.</p></div>
       <div class="faq-item"><h4>What kind of support?</h4><p>Priority email support, full training suite, and a personal onboarding call to get you running fast.</p></div>
     </div>
@@ -482,15 +491,15 @@
 <section class="cta-block">
   <div class="container">
     <h2>Ready to <span style="color:var(--gold)">stop working</span> and start winning?</h2>
-    <p>One command. Real work done. 25 premium slots. Your move.</p>
+    <p>One command. Real work done. <strong style="color:var(--gold);">25 slots only</strong>. Once filled, waitlist starts.</p>
     <a href="#pricing" class="btn-primary">Try for $47 →</a>
-    <p style="margin-top:14px; font-size:0.85rem; color:var(--text-muted);">$197/mo after trial · Cancel anytime</p>
+    <p style="margin-top:14px; font-size:0.85rem; color:var(--text-muted);">$197/mo after trial · Cancel anytime · Join waitlist when full</p>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <p>© 2026 BrowserAgent · Premium Access. All rights reserved.</p>
+    <p>© 2026 BrowserAgent · 25 Slots Only · Waitlist Active When Full</p>
   </div>
 </footer>
 
