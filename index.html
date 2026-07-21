@@ -117,6 +117,18 @@
 
     /* CTA */
     .cta-block { text-align:center; padding:80px 0; position:relative; }
+    /* PERSPECTIVE TABLE */
+    .perspective { max-width:650px; margin:0 auto 40px; }
+    .perspective-item { display:flex; justify-content:space-between; align-items:center; padding:18px 24px; border-bottom:1px solid rgba(255,255,255,0.04); }
+    .perspective-item:last-child { border:none; }
+    .perspective-item .option { display:flex; align-items:center; gap:12px; font-size:0.95rem; }
+    .perspective-item .option .dot { width:6px; height:6px; border-radius:50%; background:var(--text-muted); flex-shrink:0; }
+    .perspective-item .cost { font-size:1rem; font-weight:700; color:var(--text-muted); white-space:nowrap; }
+    .perspective-item .cost.gold { color:var(--gold); }
+    .perspective-item.winner { background:rgba(212,168,83,0.06); border-radius:8px; margin:4px 0; border:1px solid var(--border); }
+    .perspective-item.winner .option { font-weight:600; }
+    .perspective-item.winner .option .dot { background:var(--gold); }
+
     .cta-block::before { content:''; position:absolute; top:0; left:15%; right:15%; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); }
     .cta-block h2 { font-size:clamp(1.8rem,3.5vw,2.5rem); font-weight:800; margin-bottom:14px; }
     .cta-block p { color:var(--text-muted); max-width:480px; margin:0 auto 32px; }
@@ -328,6 +340,37 @@
     <div class="testimonial-card">
       <blockquote>"I made back my investment in the first 3 days. Scraped 200 leads, sold the list to a local agency for $400, and still had the data myself to prospect. This thing pays for itself weekly."</blockquote>
       <p class="author">— <strong>M. Torres</strong>, Founder at OutboundLab</p>
+    </div>
+  </div>
+</section>
+
+<!-- PERSPECTIVE -->
+<section>
+  <div class="container">
+    <div class="section-label">⬥ Put It In Perspective</div>
+    <h2 class="section-title">What you're <span style="color:var(--gold)">actually paying for</span></h2>
+    <p class="section-sub">Compared to doing this any other way, $197/mo is nothing.</p>
+    <div class="perspective">
+      <div class="perspective-item">
+        <span class="option"><span class="dot"></span> Big Tech Browser AI (ChatGPT, Claude Pro)</span>
+        <span class="cost">$200/mo</span>
+      </div>
+      <div class="perspective-item">
+        <span class="option"><span class="dot"></span> Custom AI Agent Builder (one-time build)</span>
+        <span class="cost">$5,000–$100k</span>
+      </div>
+      <div class="perspective-item">
+        <span class="option"><span class="dot"></span> VA To Do The Same Work</span>
+        <span class="cost">$1,500/mo</span>
+      </div>
+      <div class="perspective-item">
+        <span class="option"><span class="dot"></span> Basic Scraper Tool (limited, no AI)</span>
+        <span class="cost">$49–$89/mo</span>
+      </div>
+      <div class="perspective-item winner">
+        <span class="option"><span class="dot"></span> <strong style="color:var(--gold)">BrowserAgent</strong> — Full platform, AI-powered, no limits</span>
+        <span class="cost gold">$197/mo</span>
+      </div>
     </div>
   </div>
 </section>
